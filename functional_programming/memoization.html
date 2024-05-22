@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let factorial = n =>
+        {
+            console.log(n);
+            let result = 1;
+            for (let i = 1; i <= n; i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
+
+        const memoize = (fn) => 
+        {
+            let cache = {};
+            return (arg) => 
+            {
+                if (cache[arg])
+                {
+                    return cache[arg];
+                }
+                else 
+                {
+                    let returnVal = fn(arg);
+                    cache[arg] = returnVal;
+                    return returnVal;
+                }
+            }
+        }
+
+        factorial = memoize(factorial);
+        console.log(factorial(4));
+        console.log(factorial(4));
+    </script>
+</body>
+</html>

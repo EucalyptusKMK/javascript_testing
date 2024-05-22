@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btnClick">Click</button>
+    <script>
+        document.querySelector("#btnClick").addEventListener("click", () => console.log("click event"));
+        setTimeout(() => console.log("hello1"), 0);
+        setTimeout(() => console.log("hello2"), 0);
+        setTimeout(() => console.log("hello3"), 0);
+
+        console.log("world");
+        let start = new Date();
+        let end = new Date();
+        while ((end - start) < 3000)
+        {
+            end = new Date();
+        }
+        console.log("after 3 seconds");
+    </script>
+</body>
+</html>

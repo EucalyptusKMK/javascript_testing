@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container
+        {
+            height : 200px;
+            color : white;
+            background-color: green;
+            text-align : center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <button type="button">Ok</button>
+    <button type="submit">Submit</button>
+    <br>
+    <span class="warning">
+        Container 3
+    </span>
+    <div id="container" class="warning">
+        Container 1
+        <div>
+            Child of container
+            <span>Span 1 of container</span>
+        </div>
+        <span>Span 2 of container</span>
+    </div>
+    <div id="container2">
+        Container 2
+        <span>Span 1 of container 2</span>
+    </div>
+</body>
+<script>
+    console.log("querySelector id => ", document.querySelector("#container"));
+    console.log("querySelector class => ", document.querySelector(".warning"));
+    console.log("querySelector span.class => ", document.querySelector("span.warning"));
+    console.log("querySelectorAll => ", document.querySelectorAll("div"));
+    console.log("querySelectorAll button[type='button'] => ", document.querySelectorAll("button[type='button']"));
+    console.log("querySelectorAll #container span => ", document.querySelectorAll("#container span"));
+    console.log("querySelectorAll div span => ", document.querySelectorAll("div span"));
+    console.log("querySelectorAll #container>span => ", document.querySelectorAll("#container>span"));
+    console.log("querySelectorAll body>div => ", document.querySelectorAll("body>div"));
+    console.log("querySelectorAll div:first-child => ", document.querySelectorAll("div:first-child"));
+
+</script>
+</html>

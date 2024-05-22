@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const pipe = (...fns) => (initialVal) => fns.reduce((accumulator, fn) => fn(accumulator), initialVal)
+        const compose = (...fns) => (initialVal) => fns.reduceRight((accumulator, fn) => fn(accumulator), initialVal)
+
+        let add1 = x => x + 1;
+        let double = x => x * x;
+        let log = x => console.log(x);
+        let length = str => str.length;
+
+        let pipeFun = pipe(length, add1, double, log);
+        let composeFun = compose(log, double, add1, length);
+        pipeFun("hello");
+        composeFun("wa");
+    </script>
+</body>
+</html>

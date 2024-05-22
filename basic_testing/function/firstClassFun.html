@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // rule 1 (function must be assign in variable)
+        function fun() 
+        {
+            console.log('hello world');
+        }
+
+        let greet = fun;
+        greet();
+
+        // rule 2 (function must be pass by parameter)
+        function getFun(fn)
+        {
+            fn();
+        }
+        getFun(greet);
+
+        // rule 3 (function must be return another fun)
+        function getFun2()
+        {
+            return fun;
+        }
+        getFun2()();
+    </script>
+</body>
+</html>

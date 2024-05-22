@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let obj = {
+            _age : 20,
+            get age()
+            {
+                return this._age;
+            }, 
+            set age(newVal)
+            {
+                console.log("new Value is ", newVal);
+                if (newVal > 0 && newVal <= 100)
+                {
+                    this._age = newVal;
+                }
+            }
+        }
+        obj.age = 200;
+        console.log(obj.age);
+    </script>
+</body>
+</html>

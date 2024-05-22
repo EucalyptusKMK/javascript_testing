@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let obj = {
+            name : "kmk",
+            age : 20,
+            "key1" : "value1"
+        };
+        console.log("obj.name => ", obj.name);
+
+        let something = "key1";
+        console.log("obj[something] => ", obj[something]);
+
+        let obj2 = {};
+        obj2["1"] = "one";
+        obj2[2] = "two";
+        console.log("obj2 => ", obj2);
+
+        // obj.address.city = "yangon";
+        console.log(obj?.address?.city);
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        let done = false;
+        function payment()
+        {
+            if(!done)
+            {
+                done = true;
+                console.log("payment");
+            }
+        }
+        */
+
+        let another = () => console.log("another");
+
+        let payment = card => console.log("payment", card);
+
+        const once = fn =>
+        {
+            let done = false;
+            return (...args) =>
+            {
+                if (!done) {
+                    done = true;
+                    return fn(...args);
+                }
+            }
+        }
+
+        payment = once(payment); // override
+        payment("wave pay");
+        payment("wave pay");
+
+        another = once(another);
+        another();
+        another();
+
+    </script>
+</body>
+</html>

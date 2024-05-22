@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const inc = x => [x + 1, "inc was called!"];
+        const double = x => [x * x, "double was called!"];
+
+        class Writer 
+        {
+            constructor(val, log)
+            {
+                this.val = val;
+                this.log = log;
+            }
+
+            static of(empty)
+            {
+                return val => new Writer (val, empty);
+            }
+
+            map(fn)
+            {
+                console.log("val => ", this.val);
+                return new Writer(fn(this.val), this.log);
+            }
+
+            flapMap(fn)
+            {
+                const { val, log } = fn(this.val);
+                return new Writer(val, this.log.concat(","+ log));
+            }
+        }
+        const unit = Writer.of("");
+
+        let counter = unit(3);
+        console.log("counter => ", counter);
+        let result = counter.map(inc);
+        console.log("result => ", result);
+
+        const add5 = a => Writer.of("add 5")(a + 5);
+        const add8 = a => Writer.of("add 8, ")(a + 8);
+        const theOne = new Writer(1, "Initial One, ");
+        result = theOne
+                    .flapMap(add5)
+                    .flapMap(add8);
+        console.log("result => ", result);
+    </script>
+</body>
+</html>

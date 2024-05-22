@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let pattern = /\d{3}|[a-z]{4}/;
+        console.log("/\d{3}|[a-z]{4}/ match 123", "123".match(pattern));
+        console.log("/\d{3}|[a-z]{4}/ match 1234567890", "1234567890".match(pattern));
+
+        pattern = /java(script)?/g;
+        console.log("/java(script)?/g match java => ", "java".match(pattern));        
+        console.log("/java(script)?/g match javascript => ", "javascript".match(pattern));
+        console.log("/java(script)?/g match javascript & java => ", "javascript & java".match(pattern));
+        console.log("/java(script)?/g match javaSE => ", "javaSE".match(pattern));
+
+        pattern = /java(script)?/gi;
+        console.log("/java(script)?/gi match JAVASCRIPT & JAVA => ", "JAVASCRIPT & JAVA".match(pattern));
+
+        pattern = /java(script)?/giy;
+        console.log("/java(script)?/giy match javascript & java => ", "javascript & java".match(pattern));
+    </script>
+</body>
+</html>

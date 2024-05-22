@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let module = {
+            apiOne()
+            {
+                console.log("Api One");
+            },
+            apiTwo()
+            {
+                console.log("Api Two");
+            }
+        };
+        let proxy = new Proxy(module, {
+            get(target, prop, receiver)
+            {
+                // console.log("target => ", target, ", prop => ", prop, ", receiver => ", receiver);
+                if (typeof target[prop] === "function")
+                {
+                    console.log(`method ${prop} was called!`);
+                }
+                return target[prop];
+            }
+        }); 
+        proxy.apiOne();
+        proxy.apiTwo()
+    </script>
+</body>
+</html>

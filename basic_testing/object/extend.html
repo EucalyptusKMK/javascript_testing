@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let target = { x : 100 }, source = { y : 20, z : 30, address : {
+            city : "san chaung"
+        }};
+        for (let p in source)
+        {
+            target[p] = source[p];
+        }
+        console.log(target);
+
+        // Es6 
+        let obj = {
+            x : 50
+        };
+        let obj2 = Object.assign({
+            x : 20,
+            y : 30
+        }, obj);
+        console.log(obj2);
+
+        let obj3 = {...target, ...obj};
+        console.log(obj3);
+
+        // right obj override left obj
+        // shadow clones
+    </script>
+</body>
+</html>

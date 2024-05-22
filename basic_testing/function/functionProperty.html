@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function testing()
+        {
+            console.log("hello world");
+        }
+
+        console.log(typeof testing);
+        console.log(testing instanceof Object);
+        console.log(`function name is ${testing.name} and function length is ${testing.length}`);
+
+        testing.something = "testing function property";
+        console.log(testing.something);
+
+        unique.counter = 0;
+        function unique()
+        {
+            return unique.counter++;
+        }
+        console.log(unique());
+        console.log(unique());
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // should not contain space
+        let pattern = /\d{9,12}/;
+        console.log("/\d{9,12}/ test 1 => ", pattern.test(1));
+        console.log("/\d{9,12}/ test 1 7883882 4 => ", pattern.test("1 7883882 4"));
+        console.log("/\d{9,12}/ test 09787484437 => ", pattern.test("09787484437"));
+        console.log("/\d{9,12}/ test 09 787 484 437 => ", pattern.test("09 787 484 437"));
+        console.log("/\d{9,12}/ test 09787kaung@ => ", pattern.test("09787kaung@"));
+
+        pattern = /^\d{9,12}$/;
+        console.log("/^\d{9,12}$/ test 09787484437 => ", pattern.test("09787484437"));
+        console.log("/^\d{9,12}$/ test 09 787 484 437 7899 => ", pattern.test("09 787 484 437 7899"));
+        console.log("/^\d{9,12}$/ test 09787kaung@ => ", pattern.test("09787kaung@"));
+
+        pattern = /^\d{9,}$/;
+        console.log("/^\d{9,}$/ test 09787484437 => ", pattern.test("09787484437"));
+        console.log("/^\d{9,}$/ test 09 787 484 437 7899 => ", pattern.test("09 787 484 437 7899"));
+        console.log("/^\d{9,}$/ test 097871338388333kaung@ => ", pattern.test("097871338388333kaung@"));
+        console.log("/^\d{9,}$/ test 0978748443738382929333 => ", pattern.test("0978748443738382929333"));
+
+        pattern = /^\d{9}$/;
+        console.log("/^\d{9}$/ test 123456789 => ", pattern.test("123456789"));
+        console.log("/\d{9}/ test 1 => ", pattern.test(1));
+        console.log("/^\d{9}$/ test 0978748443738382929333 => ", pattern.test("0978748443738382929333"));
+        console.log("/^\d{9}$/ test 1 34567 9 => ", pattern.test("1 34567 9"));
+
+        pattern = /^\d?$/;
+        console.log("/^\d?$/ test 1 => ", pattern.test(1));
+        console.log("/^\d?$/ test '' => ", pattern.test(""));
+        console.log("/^\d?$/ test 123 => ", pattern.test(123));
+
+        pattern = /\d?/;
+        console.log("/\d$/ test 1 => ", pattern.test(1));
+        console.log("/\d$/ test '' => ", pattern.test(""));
+        console.log("/\d$/ test 123 => ", pattern.test(123));
+
+        pattern = /^\d+$/;
+        console.log("/^\d+$/ test 1 => ", pattern.test(1));
+        console.log("/^\d+$/ test '' => ", pattern.test(""));
+        console.log("/^\d+$/ test 123 => ", pattern.test(123));
+
+        pattern = /^\d*$/;
+        console.log("/^\d*$/ test 1 => ", pattern.test(1));
+        console.log("/^\d*$/ test '' => ", pattern.test(""));
+        console.log("/^\d*$/ test 123 => ", pattern.test(123));
+    </script>
+</body>
+</html>

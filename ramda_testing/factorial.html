@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./node_modules/ramda/dist/ramda.min.js"></script>
+    <script>
+        let factorial = n =>
+        {
+            if(n == 0 )
+            {
+                return 1;
+            }
+            else
+            {
+                return n * factorial(n - 1);
+            }
+        }
+        console.log(factorial(4));
+
+        const log = R.tap(console.log);
+        const ramdaFactorial = n => R.reduce(R.multiply, 1)(R.range(1, n + 1));
+
+        const fact2 = n => R.pipe(
+            R.inc,
+            log,
+            R.range(1),
+            log,
+            R.reduce(R.multiply, 1),
+        )(n);
+        console.log("Ramda factorial => ", ramdaFactorial(4));
+        console.log("Ramda factorial with pipe => ", fact2(4));
+    </script>
+</body>
+</html>

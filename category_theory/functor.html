@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        const inc = x => x + 1;
+        const double = x => x * 2;
+
+        const Container = val => 
+        ({
+            val,
+            map(fn)
+            {
+                return Container(fn(val));
+            }, 
+            valueOf()
+            {
+                return val;
+            }
+        });
+        let count = Container(10);
+        console.log("count => ", count);
+
+        let count2 = count
+                        .map(inc)
+                        .map(double);
+        console.log("count2 => ", count2);
+
+        // rule 1 
+        let identity = x => x;
+        console.log("rule 1 =>", count.map(identity).val == count.val);
+
+        // rule 2
+        const pipe = funA => funB => x => funB(funA(x));
+        let newFun = pipe(inc)(double);
+        let count3 = count.map(newFun);
+        let count4 = count
+                        .map(inc)
+                        .map(double);
+        console.log("count3 => ", count3, "count4 => ", count4);
+        console.log("rule 2 => ", count3.val == count4.val);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let arr = [1, 2, 3];
+        let arr2 = arr
+                    .map(x => [x, x * x])
+                    .flat();
+        console.log("arr2 => ", arr2);
+
+        let Container = val => 
+        ({
+            val, 
+            map(fn) 
+            {
+                return Container(fn(val));
+            },
+            flapMap(fn)
+            {
+                return fn(val);
+            },
+            ap(container)
+            {
+                return container.map(val)
+            },
+            valueOf()
+            {
+                return val;
+            }
+        });
+        Container.of = Container;
+        const double = x => x * 2; // normal function 
+        const monadicFun = x => Container.of(x + 2);
+        const add = x => y => x + y;
+        let count = Container
+                            .of(2)
+                            .map(double)
+                            .map(add)
+                            .ap(Container.of(3))
+                            .flapMap(monadicFun);
+        console.log("count => ", count);
+    </script>
+</body>
+</html>

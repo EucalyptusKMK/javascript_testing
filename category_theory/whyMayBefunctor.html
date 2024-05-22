@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="./MayBe.js"></script>
+    <script>
+        const appendHi = msg => msg + " hi";
+        const toUpper = str => str.toUpperCase();
+        const pipe = funA => funB => x => funB(funA(x));
+
+        let data; // undefined
+        /*
+        let data = "hello"
+        let newFun = pipe(appendHi)(toUpper);
+        console.log("newFun => ", newFun(data)); 
+       */
+        let result = MayBe.of(data)
+                                .map(toUpper)
+                                .map(appendHi);
+        console.log("result => ", result);
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="btnLoad">
+        Load
+    </button>
+</body>
+<script>
+    function doSomething()
+    {
+        setTimeout(() => {
+            console.log("do something done!");
+            document.dispatchEvent(new CustomEvent("doSomethingDone", {
+                data : "success"
+            }))
+        }, 3000);
+    }
+    document.querySelector("#btnLoad")
+            .addEventListener("click", (event) => {
+                doSomething();
+            });
+    document.addEventListener("doSomethingDone", (event) => {
+        console.log("custom event do something done!", event);
+    })
+    document.addEventListener("doSomethingDone", (event) => {
+        console.log("custom event do something done 2!", event);
+    })
+</script>
+</html>
+

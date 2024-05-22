@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let pattern = /\d{3}|[a-z]{4}/;
+        console.log("/\d{3}|[a-z]{4}/ test 123", pattern.test(123));
+        console.log("/\d{3}|[a-z]{4}/ test 1234567890", pattern.test(1234567890));
+        console.log("/\d{3}|[a-z]{4}/ test myat", pattern.test("myat"));
+        console.log("/\d{3}|[a-z]{4}/ test kuangmyatkyaw", pattern.test("kuangmyatkyaw"));
+        console.log("/\d{3}|[a-z]{4}/ test km12", pattern.test("km12"));
+    </script>
+</body>
+</html>

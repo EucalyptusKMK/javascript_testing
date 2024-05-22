@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <script>
+        let students = [
+            {
+                name : "kmk",
+                age : 20,
+                gender : "male",
+            },
+            {
+                name : "kyaw kyaw",
+                age : 25,
+                gender : "male",
+            },
+            {
+                name : "mya mya",
+                age : 28,
+                gender : "female",
+            },
+            {
+                name : "aye aye",
+                age : 31,
+                gender : "female",
+            },
+            {
+                name : "tun tun",
+                age : 34,
+                gender : "male",
+            },
+        ]
+        let females = students.filter(student => student.gender == "female")
+                            .reduce((stuA, stuB) => stuA.age < stuB.age ? stuA.age : stuB.age);
+        console.log(females);
+    </script>
+</body>
+</html>

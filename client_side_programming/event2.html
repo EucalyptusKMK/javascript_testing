@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="btnPayment">
+        Payment
+    </button>
+    <button type="button" id="btnHello">
+        Click
+    </button>
+    <div id="container">
+        Container
+        <div id="childContainer">
+            Child
+        </div>
+    </div>
+    <a href="https://www.facebook.com/" id="btntoFB">Facebook</a>
+</body>
+<script>
+    document.addEventListener("click", (event) => {
+        console.log("document clicked", event);
+    });
+    document.addEventListener("contextmenu", (event) => {
+        console.log("document context clicked", event);
+        event.preventDefault();
+    });
+    document.querySelector("#container")
+            .addEventListener("click", (event) => {
+                console.log("container clicked 1", event);
+                // event.stopImmediatePropagation();
+            }), 
+    document.querySelector("#container")
+            .addEventListener("click", (event) => {
+                // event.stopImmediatePropagation();
+                if (event.target === this)
+                {
+                    console.log("container clicked 2", event);
+                }
+            }), 
+    document.querySelector("#btnHello")
+            .addEventListener("click", (event) => {
+                console.log("btnHello handler 1", event);
+            });
+    document.querySelector("#btnHello")
+            .addEventListener("click", (event) => {
+                console.log("btnHello handler 2", event);
+            });
+    document.querySelector("#childContainer")
+            .addEventListener("click", (event) => {
+                console.log("childContainer handler clicked", event); 
+                document.querySelector("#btnPayment").dispatchEvent(new CustomEvent("click", event));
+                // event.stopPropagation();
+            });
+    document.querySelector("#btnPayment")
+            .addEventListener("click", (event) => {
+                console.log("paymentBtn clicked", event);
+            }, {
+                once : true,
+            });
+    document.querySelector("#btntoFB")
+            .addEventListener("click", (event) => {
+                event.preventDefault();
+            })
+</script>
+</html>

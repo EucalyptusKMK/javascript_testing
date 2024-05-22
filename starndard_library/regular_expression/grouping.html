@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let pattern = /java(script)?/;
+        console.log("/java(script)?/ exec java => ", pattern.exec("java"));        
+        console.log("/java(script)?/ exec javascript => ", pattern.exec("javascript"));
+        console.log("/java(script)?/ exec javascript & java => ", pattern.exec("javascript & java"));
+        console.log("/java(script)?/ exec javaSE => ", pattern.exec("javaSE"));
+
+        pattern = /([a-zA-Z]+)@(([a-zA-Z]+))\.(com|org|gov)/;
+        console.log("/([a-zA-Z]+)@(([a-zA-Z]+))\.(com|org|gov)/ exec user@domain.com => ", pattern.exec("user@domain.com"));
+    </script>
+</body>
+</html>

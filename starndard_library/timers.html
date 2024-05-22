@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btnStopTimer">Stop</button>
+    <button id="btnStopInterval">Stop Interval</button>
+
+    <div id="clock">
+
+    </div>
+    <script>
+        document.querySelector("#btnStopTimer").addEventListener("click", () => {
+            console.log("btnStopTimer click");
+            clearTimeout(timer1);
+        });
+
+        document.querySelector("#btnStopInterval").addEventListener("click", () => {
+            console.log("btnStopInterval click");
+            clearInterval(timer2);
+        });
+
+        let timer1 = setTimeout(() => console.log("hello1"), 2000);
+        console.log("timer registered!");
+
+        let timer2 = setInterval(() => {
+            document.querySelector("#clock").innerText = new Date();
+        })
+    </script>
+</body>
+</html>

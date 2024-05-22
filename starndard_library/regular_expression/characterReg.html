@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let pattern = /s$/;
+        console.log("/s$/ test hello => ", pattern.test("hello"));
+        console.log("/s$/ test hellos => ", pattern.test("hellos"));
+
+        pattern = /^Java/;
+        console.log("/^Java/ test Java => ", pattern.test("JavaScript"));
+        console.log("/^Java/ test C++ => ", pattern.test("C++"));
+
+        pattern = /[xyz]/ 
+        console.log("/[xyz]/ test kaung => ", pattern.test("kaung"));
+        console.log("/[xyz]/ test kaungz => ", pattern.test("kaungz"));
+
+        pattern = /[a-z]/
+        console.log("/[a-z]/ test c => ", pattern.test("c"));
+        console.log("/[a-z]/ test 1 => ", pattern.test("1"));
+        console.log("/[a-z]/ test H => ", pattern.test("H"));
+
+        pattern = /[A-Z]/
+        console.log("/[A-Z]/ test c => ", pattern.test("c"));
+        console.log("/[A-Z]/ test 1 => ", pattern.test("1"));
+        console.log("/[A-Z]/ test H => ", pattern.test("H"));
+
+        pattern = /[a-zA-Z0-9]/
+        console.log("/[a-zA-Z0-9]/ test c => ", pattern.test("c"));
+        console.log("/[a-zA-Z0-9]/ test 1 => ", pattern.test("1"));
+        console.log("/[a-zA-Z0-9]/ test H => ", pattern.test("H"));
+        console.log("/[a-zA-Z0-9]/ test @ => ", pattern.test("@"));
+
+        pattern = /\w/ 
+        console.log("/\w/ test c => ", pattern.test("c"));
+        console.log("/\w/ test 1 => ", pattern.test("1"));
+        console.log("/\w/ test U => ", pattern.test("U"));
+        console.log("/\w/ test * => ", pattern.test("*"));
+
+        pattern = /[^123]/ 
+        console.log("/[^123]/ test u => ", pattern.test("u"));
+        console.log("/[^123]/ test 2 => ", pattern.test(2));
+        console.log("/[^123]/ test 123 => ", pattern.test(123));
+
+        pattern = /./ 
+        console.log("/./ test u => ", pattern.test("u"));
+        console.log("/./ test 2 => ", pattern.test(2));
+        console.log("/./ test UG => ", pattern.test("UG"));
+        console.log("/./ test # => ", pattern.test("#"));
+
+        pattern = /^\d$/ 
+        console.log("/^\d$/ test Unk => ", pattern.test("Unk"));
+        console.log("/^\d$/ test 24 => ", pattern.test(24));
+        console.log("/^\d$/ test 2kmk3 => ", pattern.test("2kmk3"));
+        console.log("/^\d$/ test 2titi => ", pattern.test("2titi"));
+        console.log("/^\d$/ test 2 => ", pattern.test(2));
+        console.log("/^\d$/ test '2' => ", pattern.test("2"));
+
+        pattern = /^\d*$/ 
+        console.log("/^\d*$/ test Unk => ", pattern.test("Unk"));
+        console.log("/^\d*$/ test 24 => ", pattern.test(24));
+        console.log("/^\d*$/ test 2kmk3 => ", pattern.test("2kmk3"));
+        console.log("/^\d*$/ test 2titi => ", pattern.test("2titi"));
+        console.log("/^\d*$/ test 2 => ", pattern.test(2));
+        console.log("/^\d*$/ test '2' => ", pattern.test("2"));
+
+        pattern = /\D/
+        console.log("/\D/ test u => ", pattern.test("u"));
+        console.log("/\D/ test 23 => ", pattern.test(23));
+        console.log("/\D/ test u456 => ", pattern.test("u456"));
+        console.log("/\D/ test 1uk => ", pattern.test("1uk"));
+        console.log("/\D/ test '1' => ", pattern.test("1"));
+
+        pattern = /\w/
+        console.log("/\w/ test kmk => ", pattern.test("kmk"));
+        console.log("/\w/ test Kaung => ", pattern.test("Kaung"));
+        console.log("/\w/ test kmk.gmail => ", pattern.test("kmk.gmail"));
+        console.log("/\w/ test 12Kmk => ", pattern.test("12Kmk"));
+        console.log("/\w/ test 12titi => ", pattern.test("12titi"));
+        console.log("/\w/ test 12@kKmk => ", pattern.test("12@k"));
+        console.log("/\w/ test 12 => ", pattern.test(12));
+
+        pattern = /\W/
+        console.log("/\W/ test kmk => ", pattern.test("kmk"));
+        console.log("/\W/ test Kaung => ", pattern.test("Kaung"));
+        console.log("/\W/ test kmk.gmail => ", pattern.test("kmk.gmail"));
+        console.log("/\W/ test 12Kmk => ", pattern.test("12Kmk"));
+        console.log("/\W/ test 12titi => ", pattern.test("12titi"));
+        console.log("/\W/ test 12@kKmk => ", pattern.test("12@k"));
+        console.log("/\W/ test 12 => ", pattern.test(12));
+
+        pattern = /\s/
+        console.log("/\s/ test '' => ", pattern.test(""));
+        console.log("/\s/ test space => ", pattern.test(" "));
+        console.log("/\s/ test tab => ", pattern.test("     "));
+        console.log("/\s/ test kaung myat kyaw => ", pattern.test("kaung myat kyaw"));
+
+        pattern = /\S/
+        console.log("/\S/ test '' => ", pattern.test(""));
+        console.log("/\S/ test space => ", pattern.test(" "));
+        console.log("/\S/ test tab => ", pattern.test("     "));
+        console.log("/\S/ test kaung myat kyaw => ", pattern.test("kaung myat kyaw"));
+        console.log("/\S/ test Kaung@123 => ", pattern.test("Kaung@123"));
+
+        pattern = /Java|JavaScript/
+        console.log("/Java|JavaScript/ test Java => ", pattern.test("Java"));
+        console.log("/Java|JavaScript/ test JavaScript => ", pattern.test("JavaScript"));        
+        console.log("/Java|JavaScript/ test Java SE => ", pattern.test("Java SE"));
+        console.log("/Java|JavaScript/ test kmk123@ => ", pattern.test("kmk123@"));
+    </script>
+</body>
+</html>

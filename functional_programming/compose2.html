@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const compose = (fn1, fn2) => (x) => fn1(fn2(x));
+        
+        let add1 = x => x + 1;
+        let double = x => x * x;
+        let log = x => console.log(x);
+
+        let newFun = compose(log, compose(double, add1));
+        newFun(3);
+
+        let length = str => str.length;
+        let newFun2 = compose(newFun, length);
+        newFun2("hello");
+    </script>
+</body>
+</html>

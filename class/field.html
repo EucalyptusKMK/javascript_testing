@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        class Buffer
+        {
+            #size = 0;
+            capacity = 4096;
+
+            display()
+            {
+                console.log(`Size is ${this.#size} and Capacity is ${this.capacity}`);
+            }
+        }
+        let buffer = new Buffer();
+        // buffer.#size = 100;
+        buffer.display();
+    </script>
+</body>
+</html>

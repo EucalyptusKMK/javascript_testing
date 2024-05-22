@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let arr = [1, 2, 4, 7, 8, 11];
+        /*
+        for (const item of arr)
+        {
+            console.log("item => ", item);
+        }
+        */
+        let iterator = arr[Symbol.iterator]();
+        /* 
+        console.log("Iterator => ", iterator);
+        console.log("Iterator.next() => ", iterator.next()); 
+        console.log("Iterator.next() => ", iterator.next()); 
+        console.log("Iterator.next() => ", iterator.next()); 
+        console.log("Iterator.next() => ", iterator.next()); 
+        console.log("Iterator.next() => ", iterator.next()); 
+        console.log("Iterator.next() => ", iterator.next()); 
+        console.log("Iterator.next() => ", iterator.next()); 
+        */
+        for (let result = iterator.next(); !result.done; result = iterator.next())
+        {
+            console.log("result.value => ", result.value);
+        }
+    </script>
+</body>     
+</html>

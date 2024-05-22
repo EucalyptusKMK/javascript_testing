@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function div(a, b)
+        {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (isNaN(a) || isNaN(b))
+                    {
+                        reject("a or b is NaN!");
+                    }
+                    else 
+                    {
+                        resolve(a / b);
+                    }
+                }, 2000);
+            }); 
+        }
+        div(10, NaN)
+                .then(result => console.log("sucees and result is ", result), err => console.error("failed and error is ", err));
+        
+        /*
+        let p = new Promise((resolve, reject) => {
+            // resolve(100);
+            reject("something went wrong");
+        }); 
+        p.then(data => data + 2, err => 0)
+            .then(console.log);
+        */
+    </script>
+</body>
+</html>

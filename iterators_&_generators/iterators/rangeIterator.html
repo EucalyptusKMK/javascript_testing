@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        class Range
+        {
+            constructor(from, to)
+            {
+                this.from = from;
+                this.to = to;
+            }
+
+            [Symbol.iterator]()
+            {
+                let that = this;
+                let current = that.from;
+                return {
+                    next()
+                    { 
+                        // console.log("current => ", current);
+                        let done = !(current < that.to)
+                        return {
+                            value : done ? undefined : current++,
+                            done 
+                        }
+                    }
+                };
+            }
+        }
+        /*
+        console.log("iterator => ", iterator);
+        console.log("iterator.next() => ", iterator.next());
+        console.log("iterator.next() => ", iterator.next());
+        console.log("iterator.next() => ", iterator.next());
+        console.log("iterator.next() => ", iterator.next());
+        console.log("iterator.next() => ", iterator.next());
+        console.log("iterator.next() => ", iterator.next());
+        for (let result = iterator.next(); !result.done; result = iterator.next())
+        {
+            console.log("result.value => ", result.value);
+        }
+        */
+        
+        // let range = new Range(0, 5);
+        // let iterator = range[Symbol.iterator]();
+
+        function range(from, to)
+        {
+            return new Range(from, to)
+        }
+
+        for (const item of range(0, 7))
+        {
+            console.log("item => ", item);
+        }
+    </script>
+</body>
+</html>

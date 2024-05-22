@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let students = [
+            {
+                name : "mg mg",
+                age : 20
+            },
+            {
+                name : "aung aung",
+                age : 20,
+                phones : ['092883838', '0928833377']
+            },
+            {
+                name : "eucalyptus",
+                age : 32,
+            },
+            {
+                name : "mxyzptlk",
+                age : 28,
+            },
+            {
+                name : "kaung",
+                age : 35,
+            },  
+        ]
+
+        students.sort((a, b) => {
+            if (a.age - b.age == 0)
+            {
+                return a.name.localeCompare(b.name);
+            }
+            else 
+            {
+                return a.age - b.age;
+            }
+        });
+        console.log(students);
+    </script>
+</body>
+</html>

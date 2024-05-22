@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let inc = x => x++;
+        let a = 10;
+        inc(a); // x = a (copy semantic)
+        console.log(a);
+
+        let inc2 = obj => obj.val++;
+        let obj2 = {
+            val : 10,
+        }
+        inc2(obj2);
+        console.log(obj2.val);
+
+        let inc3 = obj => 
+        {
+            obj = {
+                val : 20,
+            }
+        }
+        inc3(obj2);
+        console.log(obj2.val);
+    </script>
+</body>
+</html>

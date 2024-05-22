@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let map = new Map();
+        map.set(1, "Aung Aung");
+        map.set(2, "Mya Mya");
+        map.set(2, "Aye Aye");
+        console.log("get 2 => ", map.get(2));
+        console.log("map size => ", map.size);
+        console.log("map has key 2 => ", map.has(2));
+        console.log("map has key '2' => ", map.has("2"));
+
+        let map2 = new Map([
+            [
+                "user1", {name: "Aung Aung"}
+            ],
+            [
+                "user2", {name: "Kyaw Kaw"}
+            ],
+        ]);
+        console.log("map2 => ", map2);
+        let obj = {
+            name : "kmk",
+            age : 20,
+        }
+        console.log("object entries obj => ", Object.entries(obj));
+        let map3 = new Map(Object.entries(obj));
+        console.log("map3 => ", map3);
+        for(const [key, val] of map3)
+        {
+            console.log(`key is ${key} and value is ${val} with for_of`);
+        }
+        console.log("map3 keys => ", map3.keys());
+        console.log("map3 values => ", map3.values());
+        console.log("map3 entries => ", map3.entries());
+        map3.forEach((val, key) => {
+            console.log(`key is ${key} and value is ${val} with forEach`);
+        })
+    </script>
+</body>
+</html>

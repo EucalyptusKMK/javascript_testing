@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let name = "kmk";
+        let age = 20;
+        let obj = {
+            name : name,
+            age : age,
+        }
+
+        obj = {
+            name,
+            age,
+        }
+
+        let id = 1;
+        let data = "dynamicProperty";
+        obj = {
+            [data + id] : 100
+        };
+        console.log(obj);
+
+        let obj2 = {
+            x : 10, 
+            y : 20,
+        }
+
+        let obj3 = {
+            x : 55,
+            z : 66,
+        }
+
+        let obj4 = {
+            ...obj2,
+            ...obj3
+        }
+
+        console.log(obj4);
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const add = (a, b) =>
+        {
+            if(isNaN(a) || isNaN(b))
+            {
+                throw new Error("a or b is NaN");
+            }
+            return a + b;
+        }
+        
+        let another = () => 
+        {
+            try
+            {
+                let result = add(NaN, 3);
+                console.log(result);
+                return result;
+            }
+            catch(e)
+            {
+                console.error(e);
+                // return 100;
+                throw e;
+            }
+            finally
+            {
+                console.log("finally");
+                // return 200;
+            }
+        }
+
+        console.log(another());
+        console.log("Another line after result");
+    </script>
+</body>
+</html>

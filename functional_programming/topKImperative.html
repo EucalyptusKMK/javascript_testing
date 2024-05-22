@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let nums = [1, 1, 1, 2, 2, 2, 2, 3, 3];
+
+        let frequency = {};
+        for (const item of nums)
+        {
+            if (frequency[item])
+            {
+                frequency[item]++;
+            } 
+            else 
+            {
+                frequency[item] = 1;
+            }
+        }
+        console.log(frequency);
+        let freArr = Object.entries(frequency);
+        console.log(freArr);
+
+        freArr.sort((a, b) => b[1] - a[1]);
+        console.log(freArr);
+
+        let mostFrequentItems = freArr.map(item => item[0]);
+        // mostFrequentItems.length = 2;
+        console.log(mostFrequentItems);
+    </script>
+</body>
+</html>

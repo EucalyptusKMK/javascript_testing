@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+ 
+        let appendHi = msg => msg + " hi";
+
+        let toUpper = str => str.toUpperCase();
+
+        // imperative
+        let fun = str => toUpper(appendHi(str));
+        console.log(fun("hello buddy!"));
+
+        // composition
+        const compose = (fn1, fn2) => (x) => fn1(fn2(x));
+
+        let newFun = compose(toUpper, appendHi);
+        console.log(newFun("hello everyone"));
+    </script>
+</body>
+</html>

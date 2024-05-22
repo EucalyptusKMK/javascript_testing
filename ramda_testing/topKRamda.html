@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="./node_modules/ramda/dist/ramda.min.js"></script>
+    <script>
+        let nums = [2, 2, 2, 1, 1, 2, 1, 3, 3], k = 2;
+        /*
+        let frequency = R.countBy(R.identity)(nums);
+        console.log("frequency => ", frequency);
+
+        let frequencyArr = Object.entries(frequency);
+        console.log("frequency Array => ", frequencyArr);
+
+        let tops = R.sort((a, b) => b[1]- a[1])(frequencyArr);
+        console.log("tops => ", tops);
+
+        tops = R.map(item => item[0])(tops);
+        let topK = R.take(k, tops);
+        console.log("topK's final result => ", topK);
+        */
+        const log = R.tap(console.log);
+
+        const topK = R.pipe(
+            R.countBy(R.identity),
+            log,
+            Object.entries,
+            log,
+            R.sort((a, b) => b[1]- a[1]),
+            log,
+            R.map(t => t[0]),
+            log,
+            R.take(k),
+            log,
+        );
+        console.log("topK => ", topK(nums));
+    </script>
+</body>
+</html>

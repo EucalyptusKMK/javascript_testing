@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="./Either.js"></script>
+    <script>
+        /*
+        const div = (a, b) => 
+        {
+            if (isNaN(a) || isNaN(b))
+            {
+                throw new Error("a or b is NaN");
+            }
+            else 
+            {
+                return a / b;
+            }
+        }
+        try 
+        {
+            div(10, NaN);
+        }
+        catch(e)
+        {
+            console.log(e);
+        }
+        */
+        let div = (a, b) => 
+        {
+            if (isNaN(a) || isNaN(b))
+            {
+                return Left.of("a or b is NaN");
+            }
+            else 
+            {
+                return Right.of(a / b);
+            }
+        };
+        const inc = x => x + 1;
+        let result = div(10, NaN)
+                            .matchWith({
+                                left : error => Right.of(0),
+                                right : result => Right.of(result)
+                            })
+                            .map(inc)
+                            .matchWith({
+                                left : error => console.error("failed => ", error),
+                                right : result => console.log("success => ", result),
+                            });
+    </script> 
+</body>
+</html> 

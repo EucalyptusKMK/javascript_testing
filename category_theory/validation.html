@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let obj = {
+            name : "kaung myat kyaw", 
+            email : "kmktitigmaildidid.com"
+        }
+        const minLength = length => str => str.length >= length;
+        const maxLength = length => str => str.length <= length;
+        const validEmail = email => email.includes("@");
+        const notEmpty = input => input != "";
+
+        const userNameNotEmpty = obj => notEmpty(obj.name);
+        const userEmailNotEmpty = obj => notEmpty(obj.email);
+        const userEmailValid = obj => validEmail(obj.email);
+        const userNameMinLength = obj => minLength(5)(obj.name);
+        const userEmailMinLength = obj => minLength(8)(obj.email);
+        const userNameMaxLength = obj => maxLength(10)(obj.name);
+        const userEmailMaxLength = obj => maxLength(20)(obj.email);
+        // and 
+        function andCombinator(validatorFns)
+        {
+            return function(input)
+            {
+                return validatorFns.reduce((validationResult, fn) => {
+                    return validationResult && fn(input);
+                }, true);
+            }
+        }
+        let andValidator = andCombinator([
+                                userNameNotEmpty, 
+                                userNameMinLength, 
+                                userNameMaxLength, 
+                                userEmailNotEmpty, 
+                                userEmailValid, 
+                                userEmailMinLength, 
+                                userEmailMaxLength]);
+        console.log("andValidator => ", andValidator(obj));
+        console.log("andValidator with another => ", andValidator({
+            name : "kaung",
+            email : "kmktiti@gmail.com"
+        }));
+        // or
+        function orCombinator(validatorFns)
+        {
+            return function(input)
+            {
+                return validatorFns.reduce((validationResult, fn) => {
+                    return validationResult || fn(input);
+                }, false);
+            }
+        }
+        let orValidator = orCombinator([
+                                userNameNotEmpty, 
+                                userEmailNotEmpty]);
+        console.log("or validator => ", orValidator({
+            name : "", 
+            email : "kmktiti@gmail.com",
+        }));
+
+        let andOrValidator = andCombinator([
+                                orCombinator([
+                                    userNameMinLength,
+                                    userEmailMinLength, 
+                                    userNameMaxLength,
+                                    userEmailMaxLength,
+                                ]),                                
+                                userNameNotEmpty,
+                                userEmailNotEmpty, 
+                                userEmailValid, 
+                            ]);
+        console.log("andOrValidator => ", andOrValidator({
+            name : "",
+            email : "",
+        }));
+    </script>
+</body>
+</html>

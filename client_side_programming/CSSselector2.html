@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ol>li:nth-child(even) {
+            color: green;
+        }
+        ol>li:nth-child(odd) {
+            color: purple;
+        }
+        #container {
+            color : blue;
+        }
+    </style>
+</head>
+<body>
+    <ol>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+    </ol>
+    <div style="color: red" id="container" class="container">
+        Container 
+        <div>
+            Another
+        </div>
+        <span>
+            Child of div
+        </span>
+    </div>
+    <div class="container">
+        Container 2
+        <span>
+            Child of div 2
+        </span>
+    </div>
+    <form action="">
+        Name : <input type="text" name="username"> <br>
+        Password : <input type="password" name="" id="userpassword">
+    </form>
+</body>
+<script>
+    console.log("document.querySelectorAll ol>li:nth-child(even) => ", document.querySelectorAll("ol>li:nth-child(even)"));
+    console.log("document.querySelectorAll ol>li:nth-child(odd) => ", document.querySelectorAll("ol>li:nth-child(odd)"));
+    console.log("document.querySelectorAll div+span => ", document.querySelectorAll("div+span"));
+    console.log("document.querySelectorAll div~span => ", document.querySelectorAll("div~span"));
+    console.log("getElementsByName => ", document.getElementsByName("username"));
+    console.log("getElementsByTagName => ", document.getElementsByTagName("div"));
+    console.log("getElementsByClassName => ", document.getElementsByClassName("container"));
+    console.log("document.forms[0].userpassword => ", document.forms[0].userpassword);
+</script>
+</html>

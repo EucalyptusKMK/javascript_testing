@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="alert('hello')">
+        Alert
+    </button>
+    <button type="button" id="btnShow">
+        Show
+    </button>
+    <button type="button" id="btnRemove">
+        Remove
+    </button>
+</body>
+<script>
+    window.onload = function()
+    {
+        console.log("window on load event");
+    }
+    window.onload = function()
+    {
+        console.log("window on load event 2");
+    }
+    window.addEventListener("load", () => {
+        console.log("load event!");
+    }) 
+    window.addEventListener("load", () => {
+        console.log("load event 2!");
+    })
+    let handler = () => {
+        console.log("btnShow clicked!");
+    }
+    document.querySelector("#btnShow")
+            .addEventListener("click", handler);
+    document.querySelector("#btnRemove")
+            .addEventListener("click", () => {
+                document.querySelector("#btnShow")
+                        .removeEventListener("click", handler);
+            });
+</script>
+</html>

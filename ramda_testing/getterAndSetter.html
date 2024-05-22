@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="./node_modules/ramda/dist/ramda.min.js"></script>
+    <script>
+        let obj = {
+            name : 'kmk',
+            age : 20,
+            address : {
+                city : "ygn"
+            }
+        };
+        const getField = fieldName => obj => obj[fieldName];
+        console.log("getField => ", getField("name")(obj));
+
+        // obj.address.city = "mdy"; imperative way
+        const setField = fieldName => value => obj => 
+        ({
+            ...obj,
+            [fieldName] : value,
+        })
+        let obj3 = setField('name')('change')(obj);
+        console.log("obj3 => ", obj3);
+        console.log("obj => ", obj);
+    </script>
+</body>
+</html>

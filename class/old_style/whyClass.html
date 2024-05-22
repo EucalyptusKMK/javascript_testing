@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let obj = {
+            name : "kmk",
+            age : 39,
+            display()
+            {
+                console.log(`${this.name} is ${this.age} years old.`);
+            }
+        };
+        obj.display();
+
+        function Human(name, age)
+        {
+            this.name = name;
+            this.age = age;
+            this.display = function()
+            {
+                console.log(`${this.name} is ${this.age} years old.`);
+            }
+        };
+        let MgMg = new Human("Mg Mg", 21);
+        let AungAung = new Human("Aung Aung", 28);
+        MgMg.display();
+        AungAung.display();
+    </script>
+</body>
+</html>

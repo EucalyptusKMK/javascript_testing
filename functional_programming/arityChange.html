@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // const unary = (fn) => (arg) => fn(arg);
+        const unary = (fn) => (...args) => fn(args[0]);
+
+        let nums = ["100", "200", "300"].map(unary(parseInt)); // 100, 0 | 200, 1
+        console.log(nums);
+    </script>
+</body>
+</html>

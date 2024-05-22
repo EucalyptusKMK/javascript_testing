@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        console.log("hello world");
+        console.error("hello world");
+        console.warn("hello world");
+
+        let obj = {
+            name : "kaung myat kyaw",
+            age : 20,
+        }
+        console.table(obj);
+
+        function hello()
+        {
+            console.log("hello");
+            console.trace("this is console trace");
+        }
+        hello();
+
+        console.time("timer1");
+        console.count("count");
+        console.count("count");
+        console.count("count");
+
+        console.log("count rest!");
+        console.countReset("count");
+        console.count("count");
+        console.count("count");
+
+        console.group("lvl 1");
+        console.log("level1 output");
+        console.group("lvl 2");
+        console.log("level2 output");
+        console.group("lvl 3");
+        console.log("level3 output");
+        console.groupEnd();
+        console.groupEnd();
+
+        console.log("time");
+        console.timeLog("timer1");
+        console.timeEnd("timer1");
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let students = [
+            {
+                name : "kmk",
+                age : 20,
+                phones : ['092883838', '0928833377']
+            },
+            {
+                name : "eucalyptus",
+                age : 32,
+            },
+            {
+                name : "mxyzptlk",
+                age : 28,
+            },
+            {
+                name : "kaung",
+                age : 35,
+            }
+        ]
+
+        console.log(students[0].phones);
+        console.log(students[1]);
+        console.log(students[2]);
+        console.log(students[3]);
+        console.log(students[3].phones);
+
+        console.log(students.length);
+
+        students[5] = {
+            name : "myat",
+            age : 19,
+        }
+        console.log(students.length);
+        console.log(students);
+
+        students.length = 3;
+        console.log(students);
+    </script>
+</body>
+</html>

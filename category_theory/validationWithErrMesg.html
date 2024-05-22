@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // failure
+        const Left = val =>
+        ({
+            val,
+            isLeft()
+            {
+                return true;
+            },
+            map(fn)
+            {
+                return Left.of(val);
+            },
+            matchWith(context) // {left : () =>, right : () => }
+            {
+                return context.left(val);
+            },
+            valueOf()
+            {
+                return val;
+            },
+            and(other)
+            {
+                // console.log("and val is ", val)
+                return other.isLeft() ? 
+                            Left.of([...val, ...other.val]) : 
+                            Left.of(val);
+            },
+            or(other)
+            {   
+                // console.log("or val is ", val)
+                return other.isLeft() ? 
+                            Left.of([...val, ...other.val]) : 
+                            Right.of(val);
+            }
+        });
+        Left.of = Left;
+
+        // success
+        const Right = val => 
+        ({
+            val,
+            isLeft()
+            {
+                return false;
+            },
+            map(fn)
+            {
+                return Right.of(fn(val));
+            },
+            matchWith(context)
+            {
+                return context.right(val);
+            },
+            valueOf()
+            {
+                return val;
+            },
+            and(other)
+            {
+                return !other.isLeft() ? Right.of(val) : other;
+            },
+            or(other)
+            {   
+                return Right.of(val);
+            }
+        });
+        Right.of = Right;
+        
+        let obj = {
+            name : "kaung myat kyaw", 
+            email : "kmktitigmaildidid.com"
+        };
+        const minLength = length => str => str.length >= length;
+        const maxLength = length => str => str.length <= length;
+        const validEmail = email => email.includes("@");
+        const notEmpty = input => input != "";
+
+        const userNameNotEmpty = obj => notEmpty(obj.name);
+        const userEmailNotEmpty = obj => notEmpty(obj.email);
+        const userEmailValid = obj => validEmail(obj.email);
+        const userNameMinLength = obj => minLength(5)(obj.name);
+        const userEmailMinLength = obj => minLength(8)(obj.email);
+        const userNameMaxLength = obj => maxLength(10)(obj.name);
+        const userEmailMaxLength = obj => maxLength(20)(obj.email);
+
+        function enrich(validationFn, errorMsg)
+        {
+            return function(input)
+            {
+                return validationFn(input) ? Right.of(input) : Left.of([errorMsg]);
+            }
+        }
+        const userNameNotEmptyV2 = enrich(userNameNotEmpty, "Username is empty");
+        const userEmailNotEmptyV2 = enrich(userEmailNotEmpty, "UserEmail is empty");
+        const userEmailValidV2 = enrich(userEmailValid, "userEmail must be valid");
+        const userNameMinLengthV2 = enrich(userNameMinLength, "UserName minLength should be 5");
+        const userEmailMinLengthV2 = enrich(userEmailMinLength, "UserEmail minLength should be 8");
+        const userNameMaxLengthV2 = enrich(userNameMaxLength, "UserName maxLength should be 10");
+        const userEmailMaxLengthV2 = enrich(userEmailMaxLength, "UserEmail maxLength should be 20");
+        /*
+        userNameNotEmptyV2({
+            name : "",
+            email : "kmktiti@gmail.com",
+        }).matchWith({
+            right : () => console.log("success"),
+            left : (error) => console.log("validation failed => ", error),
+        });
+        */
+        function andCombinator(validatorFns)
+        {
+            return function(input)
+            {
+                return validatorFns.reduce((validationResult, fn) => {
+                    return validationResult.and(fn(input));
+                }, Right.of(input));
+            }
+        }
+        let andValidator = andCombinator([
+                                userNameNotEmptyV2, 
+                                userNameMinLengthV2,
+                                userNameMaxLengthV2, 
+                                userEmailNotEmptyV2, 
+                                userEmailValidV2, 
+                                userEmailMinLengthV2, 
+                                userEmailMaxLengthV2,]);            
+        andValidator({
+            name : "dd",
+            email : "ail.com",
+        }).matchWith({
+            left : (error) => console.error("and validation failed! => ", error),
+            right : (data) => console.log("and validation success! => ", data),
+        })
+
+        function orCombinator(validatorFns)
+        {
+            return function(input)
+            {
+                return validatorFns.reduce((validationResult, fn) => {
+                    return validationResult.or(fn(input));
+                }, Left.of([]));
+            }
+        }
+        let orValidator = orCombinator([
+                                userNameNotEmptyV2, 
+                                userEmailNotEmptyV2]);
+        orValidator({
+            name : "kaungmayt", 
+            email : "aindvv@gmail.com",
+        }).matchWith({
+            left : (error) => console.error("or validation failed! => ", error),
+            right : (data) => console.log("or validation success! => ", data),
+        });
+
+        let andOrValidator = andCombinator([
+                                orCombinator([
+                                    userNameMinLengthV2,
+                                    userEmailMinLengthV2, 
+                                    userNameMaxLengthV2,
+                                    userEmailMaxLengthV2,
+                                ]),                                
+                                userNameNotEmptyV2,
+                                userEmailNotEmptyV2, 
+                                userEmailValidV2, 
+                            ]);
+        andOrValidator({
+            name : "ka",
+            email : "titi@gmail.com",
+        }).matchWith({
+            left : (error) => console.error("andOr validation failed! => ", error),
+            right : (data) => console.log("andOr validation success! => ", data),
+        });
+    </script>
+</body>
+</html>

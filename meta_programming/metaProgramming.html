@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        function check(obj)
+        {
+            return obj.name !== undefined && obj.age !== undefined;
+        }
+        console.log("check => ", check({
+            name : "kmk",
+            age : 20,
+        }));
+
+        let obj2 = {
+            name : "kaung",
+            age : 21,
+            address : "yangon"
+        };
+        console.log("check obj2 => ", check(obj2));
+        */
+        function checkWithMeta(obj)
+        {
+            let response = true;
+            for (let prop in obj)
+            {
+                console.log(`check ${prop}, value => ${obj[prop]}`);
+                response = response && obj[prop] !== undefined;
+            }
+            return response;
+        }
+        
+        let obj = {
+            name : "kmk",
+            age : 20,
+        };
+        console.log("check with meta obj => ", checkWithMeta(obj));
+
+        let obj2 = {
+            name : "kaung",
+            age : 21,
+            role : "student"
+        };
+        console.log("check with meta obj2 => ", checkWithMeta(obj2));
+
+        let obj3 = {
+            name : "myat", 
+            age : 30,
+            address : "kyonpyaw",
+        }
+        console.log("check with meta obj3 => ", checkWithMeta(obj3));
+        console.log("descriptor => ", Object.getOwnPropertyDescriptors(obj3));
+    </script>
+</body>
+</html>

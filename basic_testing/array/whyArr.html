@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let ages = [20, 24, 28, 31, 39];
+
+        let totalAges = 0;
+        for (const age of ages)
+        {
+            totalAges += age;
+        }
+        console.log("total ages => ", totalAges);
+        console.log("average age => ", totalAges / ages.length);
+        console.log(ages);
+
+        let arr = [...ages];
+        console.log(arr);
+
+        let arr2 = new Array(10);
+        console.log(arr2);
+
+        arr = Array.of(100, 200, 300);
+        console.log(arr);
+
+        arr = Array.from(ages);
+        console.log(arr);
+    </script>
+</body>
+</html>

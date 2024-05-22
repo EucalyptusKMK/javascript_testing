@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function *gen()
+        {
+            yield 1;
+            console.log("step1");
+            yield 2;
+            console.log("step2");
+            yield 3;
+        }
+        /*
+        let generator = gen();
+        console.log("generator.next() => ", generator.next());
+        console.log("generator.next() => ", generator.next());
+        console.log("generator.next() => ", generator.next());
+        console.log("generator.next() => ", generator.next());
+        */
+        // console.log(gen());
+        for (item of gen())
+        {
+            console.log("item => ", item);
+        }
+
+        function *range(from, to)
+        { 
+            for (let i = from; i < to; i++)
+            {
+                yield i;
+            }
+        }
+        for (const item of range(1, 6))
+        { 
+            console.log("range of (1, 6) => ", item);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        class Human
+        {
+            constructor(name, age)
+            {
+                console.log("Human constructor");
+                this.name = name;
+                this._age = age;
+            }
+            set age(newAge)
+            {
+                console.log("setter => ", newAge);
+                if(newAge > 0 && newAge < 100)
+                {
+                    this._age = age
+                }
+            }
+            display()
+            {
+                console.log(`${this.name} is ${this.age} years old.`);
+            }
+            greeting()
+            {
+                console.log(`${this.name} says hello.`);
+            }
+        }
+
+        class Circle 
+        {
+            constructor(radius)
+            {
+                this.radius = radius;
+            }
+            get area()
+            {
+                return Math.PI * this.radius * this.radius;
+            }
+        }
+        let TiTi = new Human("Ti Ti", 23);
+        TiTi.age = 100;
+        console.log(TiTi);
+
+        let circle = new Circle(20);
+        console.log("Circle Area with getter => ", circle.area);
+    </script>
+</body>
+</html>

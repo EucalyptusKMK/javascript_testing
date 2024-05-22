@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function unique() // outer function
+        {
+            let counter = 0;
+            return function inner() // inner function 
+            {
+                return counter++;
+            }
+        }
+
+        let id = unique();
+        console.log(typeof id);
+        console.log(id());
+        console.log(id());
+
+        let another = unique();
+        console.log(another());
+        console.log(another());
+
+    </script>
+</body>
+</html>

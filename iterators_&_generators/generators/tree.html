@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let data = [
+            {
+                id : 1,
+                name : "Emp1", 
+            }, 
+            {
+                type : "department",
+                name : "HR", 
+                emplyoees : [
+                    {
+                        id : 2,
+                        name : "Emp2",
+                    },
+                    {
+                        id : 3,
+                        name : "Emp3",
+                    },
+                    {
+                        id : 4,
+                        name : "Emp4",
+                    },
+                    {
+                        type : "department",
+                        name : "Something", 
+                        emplyoees : [
+                            {
+                                id : 5,
+                                name : "Emp5",
+                            },
+                        ]
+                    },
+                ]
+            }, 
+        ];
+        function *traverse(items)
+        {
+            for (let i = 0; i < items.length; i++)
+            {
+                let item = items[i];
+                if (item.type == "department")
+                {
+                    yield* traverse(item.emplyoees);
+                }
+                else 
+                {
+                    yield item;
+                }
+            }
+        }
+        // traverse(data);
+        for (const emp of traverse(data))
+        {
+            console.log("Emp => ", emp);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const demethodize = fn => (arg0, ...args) => fn.apply(arg0, args);
+
+        const name = "FUNCTIONAL";
+
+        const result = name.split("").map(n => n.toLowerCase());
+        console.log(result);
+
+        const map = demethodize(Array.prototype.map);
+        const toLowerCase = demethodize(String.prototype.toLowerCase);
+        const result2 = map(name, toLowerCase);
+        console.log(result2);
+
+        console.log(Array.prototype.map.apply("hello", [x => x.toUpperCase()]));
+    </script>
+</body>
+</html>

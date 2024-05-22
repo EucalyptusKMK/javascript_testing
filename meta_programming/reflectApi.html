@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let obj = {
+            name : "kmk", 
+            display()
+            {
+                console.log(`I'm ${this.name}`);
+            }
+        }
+        let obj2 = {
+            name : "kaung", 
+        }
+        Reflect.apply(obj.display, obj2, []);
+
+        class Teacher 
+        {
+            constructor()
+            {
+                console.log("Teacher constructor");
+            }
+        }
+        class Doctor 
+        {
+            constructor()
+            {
+                console.log("Doctor constructor");
+            }
+        }
+        let jazz = Teacher;
+        let doctor = Reflect.construct(jazz, []);
+        console.log(doctor);
+    </script>
+</body>
+</html>

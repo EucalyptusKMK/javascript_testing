@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function display(obj)
+        {
+            let name = obj.name;
+            let age = obj.age;
+            console.log(name, age);
+        }
+        display({
+            name : "kmk",
+            age : 20,
+        });
+
+        function display2({name, age})
+        {
+            console.log(name, age);
+        }
+        display2({
+            name : "kmk",
+            age : 20,
+        }); // {name, age} = {"kmk", 20}
+
+        function show([x, y])
+        {
+            console.log(x, y);
+        }
+        show([1, 2]); // [x, y] = [1, 2]
+    </script>
+</body>
+</html>

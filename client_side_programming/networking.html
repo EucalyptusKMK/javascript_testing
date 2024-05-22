@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then(response => response.json())
+        .then(json => console.log(json))
+
+    fetch("https://fastly.picsum.photos/id/283/48/48.jpg?hmac=YHQ3qZ2-spd5O4yspOc7dBBnfEM5fBRx0IGvq7C_IKo")
+        .then(resp => console.log(resp))
+    
+    window.addEventListener("storage", (event) => {
+        console.log("storage event => ", event);
+    })
+</script>
+</html>

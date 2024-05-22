@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let nums = [2, 2, 2, 1, 1, 2, 1, 3, 3], k = 2;
+
+        const pipe = (...fns) => (initialVal) => fns.reduce((acc, fn) => fn(acc), initialVal);
+
+        const groupByKey = (arr) => arr.reduce((group, item) => 
+        {
+            /*
+            if (group[item])
+            {       
+
+                group[item]++;
+            }
+            else 
+            {
+                group[item] = 1;
+            }
+            return group;
+            */
+            return (group[item]) ? (group[item]++, group) : (group[item] = 1, group);
+        }, {});
+            
+        /*
+        let frequency = groupByKey(nums);
+
+        let freArr = Object.entries(frequency);
+        */
+        let sort = arr => arr.sort((a, b) => b[1] - a[1]);
+        //freArr = sort(freArr);
+        
+        let getFirstElement = arr => arr.map(item => item[0]);
+
+        // let mostFrequentItems = getFirstElement(freArr);
+
+        const tap = fn => x => 
+        {
+            fn(x);
+            return x
+        };
+
+        const log = tap(console.log);
+
+        const topK = pipe(groupByKey, 
+                                log,
+                                Object.entries, 
+                                log, 
+                                sort, 
+                                log,
+                                getFirstElement);
+        let frequent = topK(nums);
+        console.log(frequent);
+
+        frequent.length = k;
+        console.log(frequent);
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function greet()
+        {
+            console.log("hello");
+        }
+        greet();
+
+        let obj = {
+            name : "kmk",
+            age : 20,
+            display(message)
+            {
+                console.log(`${message}! I am ${this.name} and ${this.age} years old!`);
+            }
+        }
+        obj.display();
+
+        let m = obj.display;
+        m.call(obj, "Hi");
+
+        let obj2 = {
+            name : "mg mg",
+            age : 30,
+        }
+        m.call(obj2, "Hello");
+
+        let arr = [1, 3, 8, 21, 34, 45, 12];
+        console.log("Math max => ", Math.max(28, 31));
+        console.log("old school array max => ", Math.max.apply(null, arr));
+        console.log("modern way array max => ", Math.max(...arr));
+
+        let newMethod = obj.display.bind(obj2);
+        newMethod("work with obj2")
+    </script>
+</body>
+</html>

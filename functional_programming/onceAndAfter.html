@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function another()
+        {
+            console.log("another");
+        }
+
+        function payment(card)
+        {
+            console.log("payment", card);
+        }
+
+        const onceAndAfter = (fn, after) =>
+        {
+            let done = false;
+            return (...args) =>
+            {
+                if (!done) {
+                    done = true;
+                    return fn(...args);
+                } 
+                else 
+                {
+                    return after(...args)
+                }
+            }
+        }
+
+        payment = onceAndAfter(payment, () => console.log("payment have been called previously!")); // override
+        payment("wave pay");
+        payment("wave pay");
+
+        another = onceAndAfter(another, () => console.log("another have been called previously!"));
+        another();
+        another();
+    </script>
+</body>
+</html>

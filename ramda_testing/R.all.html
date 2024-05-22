@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function all(fn, list)
+        {
+            let idx = 0;
+            while (idx < list.length) {
+                if (!fn(list[idx])) return false;
+                idx += 1;
+            }
+            return true;
+        }
+
+        const isEven = n => n % 2 == 0;
+        let arr = [2, 4, 6, 8, 11, 3];
+        let result = all(isEven, arr);
+        console.log(result);
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function max(...numbers)
+        {
+            console.log(Array.isArray(numbers));
+            console.log(numbers);
+            return Math.max(...numbers);
+        }
+        console.log(max(1, 4, 8, 11, 4));
+
+        function maxOld()
+        {
+            console.log("arguments => ", arguments);
+            return Math.max.apply(null, arguments);
+        }
+        console.log(maxOld(1, 22, 15, 8, 9));
+    </script>
+</body>
+</html>

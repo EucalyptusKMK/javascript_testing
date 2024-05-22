@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        
+        let payment = card => console.log("payment => ", card);
+
+        let another = () => 
+        {
+            console.log("another");
+            return "success";
+        }
+
+        const logger = (fn, log = console.log) => (...args) => 
+        {
+            log(`${fn.name} called with ${args}`);
+            let returnVal = fn(...args);
+            log(`${fn.name} returned ${returnVal}`);
+            return returnVal;
+        }
+
+        payment = logger(payment, console.warn);
+        another = logger(another);
+
+        payment("wave pay");
+        another();
+    </script>
+</body>
+</html> 

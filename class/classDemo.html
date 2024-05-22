@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        class Human
+        {
+            constructor(name, age)
+            {
+                console.log("Human constructor");
+                this.name = name;
+                this.age = age;
+            }
+            display()
+            {
+                console.log(`${this.name} is ${this.age} years old.`);
+            }
+            greeting()
+            {
+                console.log(`${this.name} says hello.`);
+            }
+        }
+
+        class Doctor extends Human
+        {
+            constructor(name, age, role)
+            {
+                super(name, age);
+                this.role = role;
+                console.log("Doctor constructor");
+            }
+            display()
+            {
+                super.display();
+                console.log(`${this.name} is ${this.age} years old.He is a ${this.role}.`);
+            }
+        }
+        let mgmg = new Human("Mg Mg", 21);
+        console.log(mgmg);
+        /*
+        mgmg.display();
+        mgmg.greeting();
+        console.log("mgmg instanceof Human => ", mgmg instanceof Human);
+        console.log("mgmg instanceof Object => ", mgmg instanceof Object);
+        */
+
+        let kyawkyaw = new Doctor("Kyaw Kyaw", 30, "doctor");
+        console.log(kyawkyaw);
+        /*
+        kyawkyaw.display();
+        kyawkyaw.greeting();
+        */
+    </script>
+</body>
+</html> 

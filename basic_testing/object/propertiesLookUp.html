@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let first = {
+            x : 10,
+            y : 20, 
+            arr : [23, 41]
+        }
+
+        let second = Object.create(first);
+        second.y = 30;
+
+        let third = Object.create(second);
+        third.z = 50;
+
+        console.log("third => ", third);
+        console.log("third.z => ", third.z);
+        console.log("third.y => ", third.y);
+
+        first.x = 100;
+        console.log("third.x => ", third.x);
+        console.log("first.x => ", first.x);
+
+        third.arr.push(73);
+        console.log("third.arr => ", third.arr);
+
+        third.arr = [300];
+        console.log("third.arr => ", third.arr);
+        console.log("first.arr => ", first.arr);
+    </script>
+</body>
+</html>

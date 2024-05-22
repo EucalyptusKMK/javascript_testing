@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container" 
+        data-something="1000"
+        data-another-thing="20000"
+    >
+        Container
+    </div>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>One</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Two</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    const container = document.getElementById("container"); 
+    console.log("container.dataset.something => ", container.dataset.something);
+    console.log("container.dataset.anotherThing => ", container.dataset.anotherThing);
+
+    // container.innerText = "Change";
+    // container.innerHTML = `<h1>Change</h1>`; 
+    container.outerText = "change";
+
+</script>
+</html>

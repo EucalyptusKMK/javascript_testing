@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        console.log("Object.getPrototypeOf([]) => ", Object.getPrototypeOf([]));
+        console.log("Object.getPrototypeOf({}) => ", Object.getPrototypeOf({}));
+
+        let parent = {
+            x : 100,
+        }
+        let obj = Object.create(parent);
+        console.log("Object.getPrototypeOf(obj) => ", Object.getPrototypeOf(obj));
+        console.log("obj => ", obj);
+        console.log("obj.x => ", obj.x);
+
+        let another = {
+            x : "hello"
+        }
+        Object.setPrototypeOf(obj, another);
+        console.log("obj.x => ", obj.x);
+    </script>
+</body>
+</html>

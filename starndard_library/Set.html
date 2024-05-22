@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let set = new Set();
+        set.add(1); 
+        set.add(2);
+        set.add(3);
+        set.add(1);
+        set.add([1, 2, 2, 3, 3, 2, 5]);
+        set.delete(1);
+        console.log("size of set => ", set.size);
+        console.log("set demo => ", set); 
+        console.log("set has 3 => ", set.has(3))
+
+        for (const element of set)
+        {
+            console.log("Element => ", element);
+        }
+        let arr = [...set];
+        console.log("arr => ", arr)
+        set.clear();
+        console.log("clear set => ",set);
+
+        let unique = new Set("Mdhsuueeeeeessseuukl");
+        console.log("unique => ", unique);
+
+        let set2 = new Set(["apple", "orange", "banana"]);
+        console.log("set2 => ", set2);
+
+        set2.forEach(item => console.log("item in set2 => ", item));
+    </script>
+</body>
+</html>

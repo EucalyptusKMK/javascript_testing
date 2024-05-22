@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let Sum = 
+        {
+            empty : () => 0,
+            concat : (x, y) => x + y,
+        }
+
+        let Min = 
+        {
+            empty : () => Number.MAX_VALUE,
+            concat : (x, y) => x < y ? x : y,
+        }
+
+        let Max = 
+        {
+            empty : () => Number.MIN_VALUE,
+            concat : (x, y) => x < y ? y : x,
+        }
+
+        const fold = (array, monoid) => array.reduce((acc, item) => monoid.concat(acc, item), monoid.empty()); 
+        /* 
+        let accumulator = monoid.empty();
+        for (const item of array)
+        {
+            accumulator = monoid.concat(accumulator, item);
+        }
+        return accumulator;
+        */
+        
+        let arr = [1, 5, 20, 19];
+        console.log("monoid sum => ", fold(arr, Sum));
+        console.log("monoid min => ", fold(arr, Min));
+        console.log("monoid max => ", fold(arr, Max));
+    </script>
+</body>
+</html>

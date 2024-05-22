@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let obj2 = {};
+        console.log(""+ obj2); // [Object Object] => empty({}) object
+
+        let obj = {
+            data: 20,
+            toString()
+            {
+                let person = {
+                    name : "kk",
+                }
+                // return person;
+                return 33
+            },
+            valueOf()
+            {
+                let person = {
+                    name : "kmk"
+                }
+                // return person;
+                return "3";
+            }
+        }
+        // console.log(""+ obj);
+        console.log(obj + 3);
+    </script>
+</body>
+</html>

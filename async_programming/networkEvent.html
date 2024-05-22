@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const todosUrl = "https://jsonplaceholder.typicode.com/todos/1"
+        fetch(todosUrl)
+            .then(response => response.json())
+            .then(json => console.log(json))
+        function ourFetch(url)
+        {
+            let request = new XMLHttpRequest();
+            request.open("GET", url);
+            request.send();
+            request.onload = function() {
+                if (request.status == 200)
+                {
+                    console.log("response => ", request.responseText);
+                }
+            }
+            request.onerror = function() {
+                console.log("API error");
+            }
+        }
+        ourFetch(todosUrl);
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .class1 {
+            color : green;
+        }
+        .class2 {
+            color : red;
+        }
+    </style>
+</head>
+<body>
+    <ol>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+    </ol>
+
+    <div id="container" class="class1">
+        Container 
+        <div>
+            Another
+        </div>
+        <span>
+            Child of div
+        </span>
+    </div>
+
+    <div class="container">
+        Container 2
+        <span>
+            Child of div 2
+        </span>
+    </div>
+
+    <form action="">
+        Name : <input type="text" name="username"> <br>
+        Password : <input type="password" name="" id="userpassword">
+    </form>
+</body>
+<script>
+    const container = document.getElementById("container");
+    console.log("container parentNode => ", container.parentNode);
+    console.log("container childNodes => ", container.childNodes);
+    console.log("container children => ", container.children);
+    console.log("container nextElementSibling => ", container.nextElementSibling);
+    console.log("container previousElementSibling => ", container.previousElementSibling);
+    
+    document.forms[0].action = "https://twitter.com/";
+    console.log("container.classList => ", container.classList);
+    container.classList.remove("class1");
+    container.classList.add("class2");
+</script>
+</html>

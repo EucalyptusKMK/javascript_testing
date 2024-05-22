@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="./node_modules/ramda/dist/ramda.min.js"></script>
+    <script>
+        let obj = {
+            name : "kmk",
+            age : 20,
+            /*
+            address : {
+                city : "ygn",
+            }
+            */
+        };
+        console.log("R.path => ", R.path(["address", "city"])(obj));
+
+        let obj2 = R.assoc("another", "value", obj);
+        console.log("obj2 => ", obj2);
+
+        let obj3 = R.assocPath(["address", "city", "township"], "ygn", obj);
+        console.log("obj3 => ", obj3);
+
+        console.log("R.prop => ", R.prop("name")(obj));
+
+        const nameLens = R.lens(R.prop("name"), R.assoc("name"));
+        console.log("view => ", R.view(nameLens)(obj));
+
+        let obj4 = R.set(nameLens, "change")(obj);
+        console.log("obj4 => ", obj4);
+
+        let obj5 = R.over(nameLens, R.toUpper, obj);
+        console.log("obj5 => ", obj5);
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+       
+        function *map(collection, mapper)
+        {
+            for (const val of collection)
+            {
+                yield mapper(val);
+            }
+        }
+        function *filter(collection, predicate)
+        {
+            for (const val of collection)
+            {
+                if (predicate(val))
+                {
+                    yield val;
+                }
+            }
+        }
+        let arr = [10, 20, 30, 40, 50];
+        for (const item of map(arr, x => x + 1))
+        {
+            console.log("item => ", item);
+        }
+
+        function *toInfinity(to)    
+        {
+            let number = to; 
+            while (true)
+            {
+                yield number++;
+            }
+        }
+        function *take(collection, count)
+        {
+            for (let i = 0; i < count; i++)
+            {
+                yield collection.next();
+            }
+        }
+        let items = toInfinity(1);
+        let result = map(items, x => x * 2);
+        for (const item of take(result, 4))
+        {
+            console.log("item => ", item);
+        }
+        // console.log(take(result, 4));
+    </script>
+</body>
+</html>

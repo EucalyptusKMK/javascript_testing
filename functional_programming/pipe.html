@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const pipe = (fn1, fn2) => (x) => fn2(fn1(x));
+        
+
+        let add1 = x => x + 1;
+        let double = x => x * x;
+        let log = x => console.log(x);
+
+        let newFun = pipe(pipe(add1, double), log);
+        newFun(3);
+
+        let length = str => str.length;
+        let newFun2 = pipe(length, newFun);
+        newFun2("hello");
+    </script>
+</body>
+</html>

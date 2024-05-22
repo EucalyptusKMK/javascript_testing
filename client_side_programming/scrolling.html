@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container
+        {
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <div>Top</div>
+    <div id="container" 
+        data-something="1000"
+        data-another-thing="20000"
+        class="transparent"
+    >
+        Container
+    </div>
+    <button id="btnScroll">Scroll</button>
+    <table id="dataTbl">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>One</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Two</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    document.getElementById("btnScroll").addEventListener("click", (event) => {
+        // window.scrollTo(0, 0);
+        setInterval(() => {
+            scrollBy(0, -150);
+        }, 200);
+    }); 
+    console.log("container getBounding rectangle => ", document.getElementById("container").getBoundingClientRect());
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function *demo() 
+        {
+            console.log("yielding");
+            let y1 = yield 1;
+            console.log("first => ", y1);
+            let y2 = yield 2;
+            console.log("second => ", y2);
+            let y3 = yield 3;
+            console.log("third => ", y3);
+            // return "this is return val in generator!";
+            throw new Error("unexpected error!");
+        }
+        let gen = demo(); 
+        let n1 = gen.next("a");
+        console.log("generator yeilded => ", n1.value);
+
+        let n2 = gen.next("b");
+        console.log("generator yeilded => ", n2.value);
+
+        let n3 = gen.next("c");
+        console.log("generator yeilded => ", n3.value);
+
+        let n4 = gen.next("d");
+        console.log("generator yeilded => ", n4.value); 
+
+        console.log("gen.next() => ", gen.next());
+    </script>
+</body>
+</html>

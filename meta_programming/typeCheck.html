@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        Name : <span id="name"></span> <br>
+        Age : <span id="age"></span>
+    </div>
+</body>
+<script>
+    let obj = {
+        name : "kmk", 
+        age : 20,
+    }
+    function updateUI(obj)
+    {
+        document.querySelector("#name").innerText = obj.name;
+        document.querySelector("#age").innerText = obj.age;
+    }
+    updateUI(obj);
+
+    function bindMVC(obj, callback)
+    {
+        let proxy = {};
+        for (let prop in obj)
+        {
+            Object.defineProperty(proxy, prop, {
+                // value : obj[prop],
+                get()
+                {
+                    return obj[prop];
+                },
+                set(newVal)
+                {
+                    if (typeof newVal === typeof obj[prop])
+                    {
+                        obj[prop] = newVal;
+                    }
+                    else 
+                    {
+                        console.warn(`Invalid type for property(${prop}) expected ${typeof obj[prop]} but found ${typeof newVal}!`)
+                    }
+                   
+                }
+            })
+        }
+        return proxy;
+    }
+    let proxy = bindMVC(obj, updateUI);
+    proxy.name = "kaung myat kyaw";
+    proxy.age = "200";
+    proxy.name = "kaung";
+</script>
+</html>

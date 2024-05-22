@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let name = window.localStorage.userName;
+    if(!name)
+    {
+        let username = window.prompt("what is your name?");
+        localStorage.userName = JSON.stringify({
+            username
+        })
+    }
+    else 
+    {
+        let obj = JSON.parse(name); 
+        console.log("obj => ", obj);
+    }
+</script>
+</html>
