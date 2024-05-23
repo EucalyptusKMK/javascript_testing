@@ -8,14 +8,6 @@
 <body>
     
     <script>
-       
-        function *map(collection, mapper)
-        {
-            for (const val of collection)
-            {
-                yield mapper(val);
-            }
-        }
         function *filter(collection, predicate)
         {
             for (const val of collection)
@@ -23,7 +15,15 @@
                 if (predicate(val))
                 {
                     yield val;
-                }
+                }   
+            }
+        }
+
+        function *map(collection, mapper)
+        {
+            for (const val of collection)
+            {
+                yield mapper(val);
             }
         }
         let arr = [10, 20, 30, 40, 50];
@@ -40,6 +40,9 @@
                 yield number++;
             }
         }
+        let items = toInfinity(1);
+        let result = map(items, x => x * 2);
+        
         function *take(collection, count)
         {
             for (let i = 0; i < count; i++)
@@ -47,8 +50,7 @@
                 yield collection.next();
             }
         }
-        let items = toInfinity(1);
-        let result = map(items, x => x * 2);
+      
         for (const item of take(result, 4))
         {
             console.log("item => ", item);
